@@ -1,0 +1,27 @@
+{
+    "name": "tms/faq-client-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony2 faq client api bundle",
+    "keywords": ["bundle", "faq" , "client", "api", "tessi"],
+    "homepage": "https://github.com/Tessi-Tms/TmsFaqClientBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TESSI MARKETING",
+            "email": "contact@tessi.fr",
+            "homepage": "http://www.tessi.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "symfony/framework-bundle": ">=2.3",
+        "twig/twig": "*"
+    },
+    "autoload": {
+        "psr-0": { "Tms\\Bundle\\FaqClientBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Tms/Bundle/FaqClientBundle"
+}
