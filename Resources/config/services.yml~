@@ -1,0 +1,7 @@
+parameters:
+    tms_faq_client.manager.faq.class: Tms\Bundle\FaqClientBundle\Manager\FaqManager
+
+services:
+    tms_faq_client.manager.faq:
+        class: %tms_faq_client.manager.faq.class%
+        arguments: [%api.faq.endpoint_root%]
