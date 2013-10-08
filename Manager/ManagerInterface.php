@@ -24,6 +24,14 @@ interface ManagerInterface
     public function findOneBy (array $parameters);
 
     /**
+     * Insert an object
+     *
+     * @param array $parameters An array of parameters used to filter results
+     * @return mixed
+     */
+    public function persist (array $parameters);
+
+    /**
      * Return the URL of the api for a collection of object
      *
      * @return string

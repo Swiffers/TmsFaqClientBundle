@@ -10,16 +10,12 @@ use Tms\Bundle\FaqClientBundle\Parser\ParserInterface;
  */
 class AbstractManager implements ManagerInterface
 {
-/**
-* Instance of FaqApi
-*
-* @var RestApiClientInterface
-*/
+    /**
+     * @var RestApiClientInterface
+     */
     protected $faqApi;
 
     /**
-     * Instance of an object parser
-     *
      * @var ParserInterface
      */
     protected $parser;
@@ -27,7 +23,7 @@ class AbstractManager implements ManagerInterface
     /**
      * contructor
      *
-     * @param RestApiClientInterface $faqApi Instance of FaqApi
+     * @param RestApiClientInterface $faqApi
      * @param ParserInterface $parser Instance of an object parser
      */
     public function __construct (RestApiClientInterface $faqApi, ParserInterface $parser)
@@ -52,6 +48,16 @@ class AbstractManager implements ManagerInterface
     public function findOneBy (array $parameters)
     {
         $data = $this->faqApi->get($this->getApiURL(), $parameters );
+
+        return $this->parser->parse($data, false, $this->getApiFormat());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function persist (array $parameters)
+    {
+        $data = $this->faqApi->post($this->getApiURL(), $parameters );
 
         return $this->parser->parse($data, false, $this->getApiFormat());
     }

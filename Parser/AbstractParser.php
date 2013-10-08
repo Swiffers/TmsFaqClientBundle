@@ -46,9 +46,9 @@ abstract class AbstractParser implements ParserInterface
     protected function decodeJSON($data)
     {
         if (! ($data = json_decode(html_entity_decode($data), true))) {
-            throw new OperationApiException('decode');
+            throw new FaqApiException('decode');
         }
-
+        
         return $data;
     }
 

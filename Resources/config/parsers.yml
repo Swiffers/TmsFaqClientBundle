@@ -3,6 +3,7 @@ parameters:
     tms_faq_client.parser.questionCategory.class: Tms\Bundle\FaqClientBundle\Parser\QuestionCategoryParser
     tms_faq_client.parser.question.class: Tms\Bundle\FaqClientBundle\Parser\QuestionParser
     tms_faq_client.parser.response.class: Tms\Bundle\FaqClientBundle\Parser\ResponseParser
+    tms_faq_client.parser.evaluation.class: Tms\Bundle\FaqClientBundle\Parser\EvaluationParser
 
 services:
     tms_faq_client.parser.faq:
@@ -19,3 +20,6 @@ services:
 
     tms_faq_client.parser.response:
         class: %tms_faq_client.parser.response.class%
+
+    tms_faq_client.parser.evaluation:
+        class: %tms_faq_client.parser.evaluation.class%
