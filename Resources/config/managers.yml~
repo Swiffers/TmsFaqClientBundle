@@ -1,7 +1,0 @@
-parameters:
-    tms_faq_client.manager.faq.class: Tms\Bundle\OperationClientBundle\Manager\FaqManager
-
-services:
-    tms_faq_client.manager.faq:
-        class: %tms_faq_client.manager.faq.class%
-        arguments: [ @da_api_client.api.faq, @tms_faq_client.parser.faq ]
