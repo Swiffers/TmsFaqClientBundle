@@ -30,7 +30,7 @@ class QuestionParser extends AbstractParser
             $responses = $this->responseParser->parse($data['responses'], true, 'array');
             foreach ($responses as $response) {
                 $object->addResponse($response);
-                $response->SetFaq($object);
+                //$response->setQuestion($object);
             }
             unset($data['responses']);
         }

@@ -23,6 +23,7 @@ class Response
      */
     protected $average;
 
+
     /**
      * Set id
      *
@@ -75,7 +76,7 @@ class Response
      * @param string $average
      * @return Response
      */
-    public function setAverage($averagee)
+    public function setAverage($average)
     {
         $this->average = $average;
 

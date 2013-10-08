@@ -49,16 +49,6 @@ class AbstractManager implements ManagerInterface
     /**
      * {@inheritDoc}
      */
-    public function findOneById ($id)
-    {
-        $data = $this->faqApi->get(sprintf($this->getObjectApiURL(), $id), array());
-
-        return $this->parser->parse($data, false, $this->getApiFormat());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function findOneBy (array $parameters)
     {
         $data = $this->faqApi->get($this->getApiURL(), $parameters );

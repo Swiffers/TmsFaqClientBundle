@@ -83,7 +83,7 @@ class Question
      * @param ArrayCollection $responses
      * @return Question
      */
-    public function setQuestions(ArrayCollection $responses)
+    public function setResponses(ArrayCollection $responses)
     {
         $this->responses = $responses;
 

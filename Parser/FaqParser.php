@@ -30,7 +30,7 @@ class FaqParser extends AbstractParser
             $questionCategories = $this->questionCategoryParser->parse($data['questionCategories'], true, 'array');
             foreach ($questionCategories as $questionCategory) {
                 $object->addQuestionCategory($questionCategory);
-                $questionCategory->SetFaq($object);
+                //$questionCategory->SetFaq($object);
             }
             unset($data['questionCategories']);
         }
