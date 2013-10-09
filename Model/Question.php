@@ -21,6 +21,11 @@ class Question
     /**
      * @var ArrayCollection
      */
+    protected $questionCategories;
+    
+    /**
+     * @var ArrayCollection
+     */
     protected $responses;
 
     /**
@@ -28,7 +33,8 @@ class Question
      */
     public function __construct()
     {
-        $this->responses = new ArrayCollection();
+        $this->questionCategories = new ArrayCollection();
+        $this->responses = new ArrayCollection() ;
     }
 
     /**
@@ -78,7 +84,7 @@ class Question
     }
 
     /**
-     * Set questions
+     * Set responses
      *
      * @param ArrayCollection $responses
      * @return Question
@@ -124,6 +130,57 @@ class Question
     public function removeResponse(Response $response)
     {
         $this->responses->removeElement($response);
+
+        return $this;
+    }
+
+    /**
+     * Set questionCategories
+     *
+     * @param ArrayCollection $questionCategories
+     * @return Question
+     */
+    public function setQuestionCategories(ArrayCollection $questionCategories)
+    {
+        $this->questionCategories = $questionCategories;
+
+        return $this;
+    }
+
+    /**
+     * Get questionCategories
+     *
+     * @return ArrayCollection
+     */
+    public function getQuestionCategories()
+    {
+        return $this->questionCategories;
+    }
+    
+    /**
+     * Add a new questionCategory
+     *
+     * @param QuestionCategory $questionCategory
+     * @return Question
+     */
+    public function addQuestionCategory(QuestionCategory $questionCategory)
+    {
+        if (! $this->questionCategories->contains($questionCategory)) {
+            $this->questionCategories->add($questionCategory);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove an existing questionCategory
+     *
+     * @param QuestionCategory $questionCategory
+     * @return Question
+     */
+    public function removeQuestionCategory(QuestionCategory $questionCategory)
+    {
+        $this->questionCategories->removeElement($questionCategory);
 
         return $this;
     }

@@ -39,11 +39,17 @@ class Faq
     protected $questionCategories;
 
     /**
+     * @var ArrayCollection
+     */
+    protected $questions;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->questionCategories = new ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     /**
@@ -185,6 +191,57 @@ class Faq
     public function removeQuestionCategory(QuestionCategory $questionCategory)
     {
         $this->questionCategories->removeElement($questionCategory);
+
+        return $this;
+    }
+
+    /**
+     * Set questions
+     *
+     * @param ArrayCollection $questions
+     * @return Faq
+     */
+    public function setQuestions(ArrayCollection $questiones)
+    {
+        $this->questions = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return ArrayCollection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    
+    /**
+     * Add a new question to the Faq
+     *
+     * @param Question $question
+     * @return Faq
+     */
+    public function addQuestion(Question $question)
+    {
+        if (! $this->questions->contains($question)) {
+            $this->questions->add($question);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove an existing question
+     *
+     * @param Question $question
+     * @return Faq
+     */
+    public function removeQuestion(Question $question)
+    {
+        $this->questions->removeElement($question);
 
         return $this;
     }

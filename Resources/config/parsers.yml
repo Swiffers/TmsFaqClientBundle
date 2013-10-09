@@ -9,15 +9,14 @@ parameters:
 services:
     tms_faq_client.parser.faq:
         class: %tms_faq_client.parser.faq.class%
-        arguments: [ @tms_faq_client.parser.questionCategory]
+        arguments: [ @tms_faq_client.parser.questionCategory, @tms_faq_client.parser.question]
 
     tms_faq_client.parser.questionCategory:
         class: %tms_faq_client.parser.questionCategory.class%
-        arguments: [ @tms_faq_client.parser.question]
 
     tms_faq_client.parser.question:
         class: %tms_faq_client.parser.question.class%
-        arguments: [ @tms_faq_client.parser.response]
+        arguments: [ @tms_faq_client.parser.questionCategory, @tms_faq_client.parser.response]
 
     tms_faq_client.parser.response:
         class: %tms_faq_client.parser.response.class%

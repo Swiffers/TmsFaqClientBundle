@@ -12,13 +12,20 @@ class FaqParser extends AbstractParser
     protected $questionCategoryParser;
 
     /**
+     * @var QuestionCategoryParser
+     */
+    protected $questionParser;
+
+    /**
      * FaqParser constructor
      *
      * @param ParserInterface $questionCategoryParser
+     * @param ParserInterface $questionParser
      */
-    public function __construct (ParserInterface $questionCategoryParser)
+    public function __construct (ParserInterface $questionCategoryParser, ParserInterface $questionParser)
     {
         $this->questionCategoryParser = $questionCategoryParser;
+        $this->questionParser = $questionParser;
     }
 
     /**
@@ -33,6 +40,14 @@ class FaqParser extends AbstractParser
                 //$questionCategory->SetFaq($object);
             }
             unset($data['questionCategories']);
+        }
+        if(isset($data['questions'])) {
+            $questions = $this->questionParser->parse($data['questions'], true, 'array');
+            foreach ($questions as $question) {
+                $object->addQuestion($question);
+                //$questionCategory->SetFaq($object);
+            }
+            unset($data['questions']);
         }
 
         return $object;
