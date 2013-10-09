@@ -51,12 +51,6 @@ class FaqParser extends AbstractParser
                     $questionCategory = $arrayMapQuestionCategory[$category->getId()];
                     $question->removeQuestionCategory($category);
                     $question->addQuestionCategory($questionCategory);
-                    /*foreach($arrayQuestionCategories as $questionCategory){
-                        if($category->getId() == $questionCategory->getId()){
-                            $question->removeQuestionCategory($category);
-                            $question->addQuestionCategory($questionCategory);
-                        }
-                    }*/
                 }
                 $object->addQuestion($question);
             }
