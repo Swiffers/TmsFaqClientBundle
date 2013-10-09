@@ -23,7 +23,6 @@ class Response
      */
     protected $average;
 
-
     /**
      * Set id
      *

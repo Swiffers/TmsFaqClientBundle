@@ -37,7 +37,7 @@ class QuestionParser extends AbstractParser
             $questionCategories = $this->questionCategoryParser->parse($data['questionCategories'], true, 'array');
             foreach ($questionCategories as $questionCategory) {
                 $object->addQuestionCategory($questionCategory);
-                //$response->setQuestion($object);
+                //$questionCategory->addQuestion($object);
             }
             unset($data['questionCategories']);
         }

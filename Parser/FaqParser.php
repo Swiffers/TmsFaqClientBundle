@@ -33,20 +33,34 @@ class FaqParser extends AbstractParser
      */
     protected function populateObject ($object, array &$data)
     {
+        $arrayMapQuestionCategory = array(); //table of id category <=> entity
         if(isset($data['questionCategories'])) {
             $questionCategories = $this->questionCategoryParser->parse($data['questionCategories'], true, 'array');
             foreach ($questionCategories as $questionCategory) {
                 $object->addQuestionCategory($questionCategory);
-                //$questionCategory->SetFaq($object);
+                $arrayMapQuestionCategory[$questionCategory->getId()] = $questionCategory;
             }
             unset($data['questionCategories']);
         }
         if(isset($data['questions'])) {
+            $questionCategories =$object->getQuestionCategories();
             $questions = $this->questionParser->parse($data['questions'], true, 'array');
             foreach ($questions as $question) {
+                $listCategories = $question->getQuestionCategories();
+                foreach ($listCategories as $category) {
+                    $questionCategory = $arrayMapQuestionCategory[$category->getId()];
+                    $question->removeQuestionCategory($category);
+                    $question->addQuestionCategory($questionCategory);
+                    /*foreach($arrayQuestionCategories as $questionCategory){
+                        if($category->getId() == $questionCategory->getId()){
+                            $question->removeQuestionCategory($category);
+                            $question->addQuestionCategory($questionCategory);
+                        }
+                    }*/
+                }
                 $object->addQuestion($question);
-                //$questionCategory->SetFaq($object);
             }
+            
             unset($data['questions']);
         }
 

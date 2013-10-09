@@ -19,6 +19,24 @@ class QuestionCategory
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $slug;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $questions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new ArrayCollection();
+    }
+
+    /**
      * Set id
      *
      * @param integer $id
@@ -63,4 +81,79 @@ class QuestionCategory
     {
         return $this->name;
     }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return QuestionCategory
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set questions
+     *
+     * @param ArrayCollection $questions
+     * @return QuestionCategory
+     */
+    public function setQuestions(ArrayCollection $questions)
+    {
+        $this->questions = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return ArrayCollection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    
+    /**
+     * Add a new question
+     *
+     * @param Question $question
+     * @return QuestionCategory
+     */
+    public function addQuestion(Question $question)
+    {
+        if (! $this->questions->contains($question)) {
+            $this->questions->add($question);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove an existing question
+     *
+     * @param Question $question
+     * @return QuestionCategory
+     */
+    public function removeQuestion(Question $question)
+    {
+        $this->questions->removeElement($question);
+
+        return $this;
+    }
+
 }
