@@ -31,6 +31,20 @@ class Evaluation
     protected $value;
 
     /**
+     * To array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            "response_id"   => $this->getResponseId(),
+            "value"         => $this->getValue(),
+            "user_id"       => $this->getConsumerId()
+        );
+    }
+
+    /**
      * Set consumerId
      *
      * @param int $consumerId
@@ -95,6 +109,7 @@ class Evaluation
      * @return int
      */
     public function getValue()
+    {
         return $this->value;
     }
 }

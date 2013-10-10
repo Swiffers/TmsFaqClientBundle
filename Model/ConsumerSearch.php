@@ -36,6 +36,7 @@ class ConsumerSearch
      */
     protected $searchQuery;
 
+
     /**
      * Set answerFound
      *
@@ -47,6 +48,21 @@ class ConsumerSearch
         $this->answerFound = $answerFound ? true : false;
 
         return $this;
+    }
+
+    /**
+     * To array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            "answerFound"   => $this->getAnswerFound(),
+            "response_id"   => $this->getResponseId(),
+            "query"         => $this->getSearchQuery(),
+            "user_id"       => $this->getConsumerId()
+        );
     }
 
     /**
