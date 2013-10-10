@@ -1,0 +1,14 @@
+parameters:
+    tms_web_participation.form.type.consumer_search.class: Tms\Bundle\FaqClientBundle\Form\Type\ConsumerSearchType
+    tms_web_participation.form.type.evaluation.class:      Tms\Bundle\FaqClientBundle\Form\Type\EvaluationType
+
+services:
+    tms_faq_client.form.type.consumer_search:
+        class: %tms_web_participation.form.type.consumer_search.class%
+        tags:
+            - { name: form.type, alias: faq_consumer_search }
+
+    tms_faq_client.form.type.evaluation:
+        class: %tms_web_participation.form.type.evaluation.class%
+        tags:
+            - { name: form.type, alias: faq_evaluation }
