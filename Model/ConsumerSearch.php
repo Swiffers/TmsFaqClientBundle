@@ -9,30 +9,122 @@ use Doctrine\Common\Collections\ArrayCollection;
 class ConsumerSearch
 {
     /**
-     * @var integer
+     * Is response useful to the consumer
+     * 
+     * @var boolean
      */
-    protected $id;
+    protected $answerFound;
 
     /**
-     * Set id
-     *
-     * @param integer $id
-     * @return Evaluation
+     * Consumer identifier
+     * 
+     * @var int
      */
-    public function setId($id)
+    protected $consumerId;
+
+    /**
+     * Response identifier
+     * 
+     * @var int
+     */
+    protected $responseId;
+
+    /**
+     * Search query string
+     * 
+     * @var string
+     */
+    protected $searchQuery;
+
+    /**
+     * Set answerFound
+     *
+     * @param boolean $answerFound
+     * @return ConsumerSearch
+     */
+    public function setAnswerFound($answerFound)
     {
-        $this->id = $id;
+        $this->answerFound = $answerFound ? true : false;
 
         return $this;
     }
 
     /**
-     * Get id
+     * Get answerFound
      *
-     * @return integer
+     * @return boolean
      */
-    public function getId()
+    public function getAnswerFound()
     {
-        return $this->id;
+        return $this->answerFound ? true : false;
+    }
+
+    /**
+     * Set consumerId
+     *
+     * @param int $consumerId
+     * @return ConsumerSearch
+     */
+    public function setConsumerId($consumerId)
+    {
+        $this->consumerId = $consumerId;
+
+        return $this;
+    }
+
+    /**
+     * Get consumerId
+     *
+     * @return int
+     */
+    public function getConsumerId()
+    {
+        return $this->consumerId;
+    }
+
+    /**
+     * Set responseId
+     *
+     * @param int $responseId
+     * @return ConsumerSearch
+     */
+    public function setResponseId($responseId)
+    {
+        $this->responseId = $responseId;
+
+        return $this;
+    }
+
+    /**
+     * Get responseId
+     *
+     * @return int
+     */
+    public function getResponseId()
+    {
+        return $this->responseId;
+    }
+
+    /**
+     * Set searchQuery
+     *
+     * @param string $searchQuery
+     * @return ConsumerSearch
+     */
+    public function setSearchQuery($searchQuery)
+    {
+        $this->searchQuery = $searchQuery;
+
+        return $this;
+    }
+
+    /**
+     * Get searchQuery
+     *
+     * @return string
+     */
+    public function getSearchQuery()
+    {
+        return $this->searchQuery;
     }
 }

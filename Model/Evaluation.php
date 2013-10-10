@@ -8,31 +8,93 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Evaluation
 {
-    /**
-     * @var integer
-     */
-    protected $id;
 
     /**
-     * Set id
+     * Consumer identifier
+     * 
+     * @var int
+     */
+    protected $consumerId;
+
+    /**
+     * Response identifier
+     * 
+     * @var int
+     */
+    protected $responseId;
+
+    /**
+     * rating value
+     * 
+     * @var int
+     */
+    protected $value;
+
+    /**
+     * Set consumerId
      *
-     * @param integer $id
+     * @param int $consumerId
      * @return Evaluation
      */
-    public function setId($id)
+    public function setConsumerId($consumerId)
     {
-        $this->id = $id;
+        $this->consumerId = $consumerId;
 
         return $this;
     }
 
     /**
-     * Get id
+     * Get consumerId
      *
-     * @return integer
+     * @return int
      */
-    public function getId()
+    public function getConsumerId()
     {
-        return $this->id;
+        return $this->consumerId;
+    }
+
+    /**
+     * Set responseId
+     *
+     * @param int $responseId
+     * @return Evaluation
+     */
+    public function setResponseId($responseId)
+    {
+        $this->responseId = $responseId;
+
+        return $this;
+    }
+
+    /**
+     * Get responseId
+     *
+     * @return int
+     */
+    public function getResponseId()
+    {
+        return $this->responseId;
+    }
+
+    /**
+     * Set value
+     *
+     * @param int $value
+     * @return Evaluation
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return int
+     */
+    public function getValue()
+        return $this->value;
     }
 }
