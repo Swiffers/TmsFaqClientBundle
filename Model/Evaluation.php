@@ -95,6 +95,7 @@ class Evaluation
      * @return int
      */
     public function getValue()
+    {
         return $this->value;
     }
 }
