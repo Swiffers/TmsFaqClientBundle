@@ -7,25 +7,46 @@ namespace Tms\Bundle\FaqClientBundle\Parser;
 class QuestionParser extends AbstractParser
 {
     /**
-     * @var QuestionCategoryParser
-     */
-    protected $questionCategoryParser;
-
-    /**
      * @var ResponseParser
      */
     protected $responseParser;
 
     /**
+     * Categories
+     * 
+     * @var array
+     */
+    protected $categories;
+
+    /**
      * QuestionParser constructor
      *
-     * @param ParserInterface $questionCategoryParser
      * @param ParserInterface $responseParser
      */
-    public function __construct (ParserInterface $questionCategoryParser, ParserInterface $responseParser)
+    public function __construct (ParserInterface $responseParser)
     {
-        $this->questionCategoryParser = $questionCategoryParser;
-        $this->responseParser = $responseParser;
+        $this->responseParser         = $responseParser;
+        $this->categories             = null;
+    }
+
+    /**
+     * Set categories
+     * 
+     * @param array $categories All known categories
+     */
+    public function setCategories(array $categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * Get categories
+     * 
+     * @return array
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 
     /**
@@ -33,15 +54,19 @@ class QuestionParser extends AbstractParser
      */
     protected function populateObject ($object, array &$data)
     {
-        if(isset($data['questionCategories'])) {
-            $questionCategories = $this->questionCategoryParser->parse($data['questionCategories'], true, 'array');
-            foreach ($questionCategories as $questionCategory) {
-                $object->addQuestionCategory($questionCategory);
-                //$questionCategory->addQuestion($object);
+        if (isset($data['questionCategories'])) {
+            foreach ($data['questionCategories'] as $c) {
+                if (isset($this->categories[$c['id']])) {
+                    $questionCategory = $this->categories[$c['id']];
+
+                    $object->addQuestionCategory($questionCategory);
+                    $questionCategory->addQuestion($object);
+                }
             }
             unset($data['questionCategories']);
         }
-        if(isset($data['responses'])) {
+        
+        if (isset($data['responses'])) {
             $responses = $this->responseParser->parse($data['responses'], true, 'array');
             foreach ($responses as $response) {
                 $object->addResponse($response);
