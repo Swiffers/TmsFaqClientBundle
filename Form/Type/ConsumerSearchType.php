@@ -53,9 +53,7 @@ class ConsumerSearchType extends AbstractType
                 'required' => true,
             ))
             ->add('consumerId', 'hidden')
-            ->add('responseId', 'hidden', array(
-                'required' => true,
-            ))
+            ->add('responseId', 'hidden')
             ->add('searchQuery', 'hidden')
             ->add('save', 'submit');
     }

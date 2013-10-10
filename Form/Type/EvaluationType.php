@@ -46,9 +46,7 @@ class EvaluationType extends AbstractType
     {
         $builder
             ->add('consumerId', 'hidden')
-            ->add('responseId', 'hidden', array(
-                'required' => true,
-            ))
+            ->add('responseId', 'hidden')
             ->add('value', 'choice', array(
                 'choices'  => array(0, 1, 2, 3, 4, 5),
                 'required' => true,
