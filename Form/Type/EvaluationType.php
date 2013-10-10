@@ -13,6 +13,22 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class EvaluationType extends AbstractType
 {
     /**
+     * form name
+     * 
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * EvaluationType contructor
+     * 
+     * @param int $responseId Response id
+     */
+    public function __construct($responseId) {
+        $this->setName($responseId);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -40,14 +56,6 @@ class EvaluationType extends AbstractType
             ->add('save', 'submit');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
-        
-    }
-
     public function getParent()
     {
         return "form";
@@ -58,6 +66,16 @@ class EvaluationType extends AbstractType
      */
     public function getName()
     {
-        return 'faq_evaluation';
+        return $this->name;
+    }
+
+    /**
+     * Set form name with and unique identifier
+     * 
+     * @param int $id unique identifier
+     */
+    protected function setName($id)
+    {
+        $this->name = sprintf('faq_evaluation_%d', $id);
     }
 }

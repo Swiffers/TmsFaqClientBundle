@@ -3,6 +3,8 @@ namespace Tms\Bundle\FaqClientBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -12,6 +14,22 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 */
 class ConsumerSearchType extends AbstractType
 {
+    /**
+     * form name
+     * 
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * ConsumerSearchType contructor
+     * 
+     * @param int $responseId Response id
+     */
+    public function __construct($responseId) {
+        $this->setName($responseId);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -42,14 +60,6 @@ class ConsumerSearchType extends AbstractType
             ->add('save', 'submit');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
-        
-    }
-
     public function getParent()
     {
         return "form";
@@ -60,6 +70,16 @@ class ConsumerSearchType extends AbstractType
      */
     public function getName()
     {
-        return 'faq_consumer_search';
+        return $this->name;
+    }
+
+    /**
+     * Set form name with and unique identifier
+     * 
+     * @param int $id unique identifier
+     */
+    protected function setName($id)
+    {
+        $this->name = sprintf('faq_consumer_search_%d', $id);
     }
 }
