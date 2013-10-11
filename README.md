@@ -1,7 +1,7 @@
 TmsFaqClientBundle
 ============================
 
-Symfony2 bundle client for TmsComplaintBundle
+Symfony2 bundle client for TmsFaqBundle
 
 Installation
 ------------
