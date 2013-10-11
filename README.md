@@ -222,3 +222,69 @@ $faq = $this->get('tms_web_admin.manager.faq')->findOneByCustomerId(89);
 ```
 
 
+How to use it
+-------------
+
+### Definition of the webservices
+
+#### get Faqs
+
+**Request**
+
+| Route                    | Method | Parameters             | Header
+|--------------------------|--------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
+| /api/faqs.json           | GET    |                        | Content-Type=json
+
+**Response**
+
+- *200 HTTP Status Code*
+
+#### get a faq by its customer_id
+
+**Request**
+
+| Route                   | Method | Parameters             | Header
+|-------------------------|--------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
+| /api/faqs/48.json       | GET    |                        | Content-Type=json
+
+
+This will result to a :
+
+- *200 HTTP Status Code*
+- *404 Not found HTTP Status Code*
+
+#### post an evaluation on a response 
+
+**Request**
+
+| Route                   | Method | Parameters             | Header
+|-------------------------|--------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
+| /api/evaluation.json    | POST   |   value                | Content-Type=json
+                                       response_id
+                                       user_id
+
+
+This will result to a :
+
+- *201  Created HTTP Status Code*
+- *404  
+
+For a 201 HTTP Response code, you will "true" (in json format) in the response content.
+
+#### post a consumer search for a response
+
+**Request**
+
+| Route                        | Method | Parameters                     |  Header
+|------------------------------|--------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
+| /api/consumerSearchs.json    | POST   |   answerFound (true or false   | Content-Type=json
+                                            response_id
+                                            user_id
+
+
+This will result to a :
+
+- *201  Created HTTP Status Code*
+- *404  
+
+For a 201 HTTP Response code, you will "true" (in json format) in the response content.
