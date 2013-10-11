@@ -260,9 +260,9 @@ This will result to a :
 | Route                   | Method | Parameters             | Header
 |-------------------------|--------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
 | /api/evaluation.json    | POST   |   value                | Content-Type=json
-                                       response_id
-                                       user_id
-
+|                         |        |   response_id          |
+|                         |        |    user_id             |
+                            
 
 This will result to a :
 
@@ -278,8 +278,8 @@ For a 201 HTTP Response code, you will "true" (in json format) in the response c
 | Route                        | Method | Parameters                     |  Header
 |------------------------------|--------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
 | /api/consumerSearchs.json    | POST   |   answerFound (true or false   | Content-Type=json
-                                            response_id
-                                            user_id
+|                              |        |   response_id                  |
+|                              |        |    user_id                     
 
 
 This will result to a :
