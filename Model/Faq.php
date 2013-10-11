@@ -201,7 +201,7 @@ class Faq
      * @param ArrayCollection $questions
      * @return Faq
      */
-    public function setQuestions(ArrayCollection $questiones)
+    public function setQuestions(ArrayCollection $questions)
     {
         $this->questions = $questions;
 

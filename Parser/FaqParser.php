@@ -40,6 +40,9 @@ class FaqParser extends AbstractParser
                 $object->addQuestionCategory($questionCategory);
                 $arrayMapQuestionCategory[$questionCategory->getId()] = $questionCategory;
             }
+
+            $this->questionParser->setCategories($arrayMapQuestionCategory);
+            
             unset($data['questionCategories']);
         }
         if(isset($data['questions'])) {

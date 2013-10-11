@@ -48,7 +48,10 @@ class ConsumerSearchType extends AbstractType
     {
         $builder
             ->add('answerFound', 'choice', array(
-                'choices'  => array( 0, 1 ),
+                'choices'  => array(
+                    1 => 'yes', 
+                    0 => 'no',
+                ),
                 'expanded' => true,
                 'required' => true,
             ))
