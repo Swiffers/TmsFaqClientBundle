@@ -80,7 +80,7 @@ parameters:
 
 ### Step 4: How to use it ?
 With this API, you can:
-- get al faqs
+- get all faqs
 - get a faq by its customer_id
 - post an evaluation on response
 - post a consumerSearch 
