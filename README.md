@@ -1,7 +1,7 @@
 TmsFaqClientBundle
 ============================
 
-This bundle provide an easy API to call the faq API.
+Symfony2 bundle client for TmsComplaintBundle
 
 Installation
 ------------
