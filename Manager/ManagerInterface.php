@@ -16,6 +16,14 @@ interface ManagerInterface
     public function findAll (array $parameters = array());
 
     /**
+     * Find an object by its id
+     *
+     * @param int $id Object identifier
+     * @return mixed
+     */
+    public function findOneById ($id);
+
+    /**
      * Find the first object corresponding to the parameters
      *
      * @param array $parameters An array of parameters used to filter results
