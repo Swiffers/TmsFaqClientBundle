@@ -5,6 +5,7 @@ use Tms\Bundle\FaqClientBundle\Exception\FaqApiException;
 
 /**
  * @author Danielle HODIEB <danielle.hodieb@tessi.fr>
+ * @author Benjamin TARDY <benjamin.tardy@tessi.fr>
  */
 abstract class AbstractParser implements ParserInterface
 {
@@ -45,11 +46,23 @@ abstract class AbstractParser implements ParserInterface
      */
     protected function decodeJSON($data)
     {
-        var_dump($data);
-        if (! ($data = json_decode(html_entity_decode($data, ENT_QUOTES), true))) {
-            throw new FaqApiException('decode');
+        if (! ($data = json_decode($data, true))) {
+            $jsonError = array(
+                JSON_ERROR_NONE           => "No error has occurred",
+                JSON_ERROR_DEPTH          => "The maximum stack depth has been exceeded",
+                JSON_ERROR_STATE_MISMATCH => "Invalid or malformed JSON",
+                JSON_ERROR_CTRL_CHAR      => "Control character error, possibly incorrectly encoded",
+                JSON_ERROR_SYNTAX         => "Syntax error",
+                JSON_ERROR_UTF8           => "Malformed UTF-8 characters, possibly incorrectly encoded",
+            );
+            $jsonErrorNumber = json_last_error();
+            $jsonErrorMessage = sprintf('Unable to decode JSON with error : %d (%s)',
+                $jsonErrorNumber,
+                isset($jsonError[$jsonErrorNumber]) ? $jsonError[$jsonErrorNumber] : ''
+            );
+            throw new FaqApiException($jsonErrorMessage);
         }
-        
+
         return $data;
     }
 
