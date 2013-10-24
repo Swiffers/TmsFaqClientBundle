@@ -2,6 +2,7 @@ parameters:
     tms_faq_client.manager.faq.class: Tms\Bundle\FaqClientBundle\Manager\FaqManager
     tms_faq_client.manager.evaluation.class: Tms\Bundle\FaqClientBundle\Manager\EvaluationManager
     tms_faq_client.manager.consumer_search.class: Tms\Bundle\FaqClientBundle\Manager\ConsumerSearchManager
+    tms_faq_client.manager.question.class: Tms\Bundle\FaqClientBundle\Manager\QuestionManager
 
 services:
     tms_faq_client.manager.faq:
@@ -15,3 +16,7 @@ services:
     tms_faq_client.manager.consumer_search:
         class: %tms_faq_client.manager.consumer_search.class%
         arguments: [ @da_api_client.api.faq, @tms_faq_client.parser.consumer_search ]
+
+    tms_faq_client.manager.question:
+        class: %tms_faq_client.manager.question.class%
+        arguments: [ @da_api_client.api.faq, @tms_faq_client.parser.question ]
