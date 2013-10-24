@@ -3,18 +3,23 @@ namespace Tms\Bundle\FaqClientBundle\Manager;
 
 /**
  * @author Danielle HODIEB <danielle.hodieb@tessi.fr>
+ * @author Benjamin TARDY <benjamin.tardy@tessi.fr>
  */
 class FaqManager extends AbstractManager
 {
     /**
-     * Find a faq by its customerId
-     *
-     * @param int $id Object identifier
-     * @return mixed
+     * Find the FAQ for a given customerId
+     * 
+     * @param  string $customerId Customer identifier
+     * @param  array  $criteria   Filter criteria
+     * @return Faq
      */
-    public function findOneByCustomerId ($customerId)
+    public function findOneByCustomerId ($customerId, array $criteria = array())
     {
-        $data = $this->faqApi->get(sprintf($this->getObjectApiURL(), $customerId), array());
+        $parameters = array_merge($criteria, array(
+            'customerId' => $customerId,
+        ));
+        $data = $this->faqApi->get($this->getApiURL(), $parameters);
 
         return $this->parser->parse($data, false, $this->getApiFormat());
     }
