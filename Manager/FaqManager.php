@@ -17,7 +17,7 @@ class FaqManager extends AbstractManager
     public function findOneByCustomerId ($customerId, array $criteria = array())
     {
         $parameters = array_merge($criteria, array(
-            'customerId' => $customerId,
+            'customer_id' => $customerId,
         ));
         $data = $this->faqApi->get($this->getApiURL(), $parameters);
 
