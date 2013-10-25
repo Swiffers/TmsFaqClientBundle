@@ -16,10 +16,7 @@ class FaqManager extends AbstractManager
      */
     public function findOneByCustomerId ($customerId, array $criteria = array())
     {
-        $parameters = array_merge($criteria, array(
-            'customer_id' => $customerId,
-        ));
-        $data = $this->faqApi->get($this->getApiURL(), $parameters);
+        $data = $this->faqApi->get(sprintf($this->getCustomerApiURL(), $customerId), $criteria);
 
         return $this->parser->parse($data, false, $this->getApiFormat());
     }
@@ -38,5 +35,13 @@ class FaqManager extends AbstractManager
     public function getObjectApiURL ()
     {
         return '/faqs/%s.json';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCustomerApiURL ()
+    {
+        return '/faqs/customers/%s.json';
     }
 }
