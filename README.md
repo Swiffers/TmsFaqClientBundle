@@ -83,7 +83,7 @@ With this API, you can:
 - get all faqs
 - get a faq by its customer_id
 - post an evaluation on response
-- post a consumerSearch 
+- post a consumerSearch
 
 In this example, we would like to retrieve a faq by its customer id
 
@@ -93,7 +93,7 @@ Example :
 <?php
 namespace Tms\WebAdminBundle\HttpClient;
 
-use Da\ApiClientBundle\HttpClient\RestApiClientBridge;
+use Da\ApiClientBundle\Http\Rest\RestApiClientBridge;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -132,7 +132,7 @@ class FaqApi extends RestApiClientBridge
             );
 
             $queryString = array_merge($defaultQueryString, $queryString);
-            
+
             return parent::get($path, $queryString);
         }
 
@@ -179,7 +179,7 @@ class FaqManager extends BaseManager
 
 - in Resources/config, create the files : managers.yml, services.yml
 - in services.yml
- 
+
 ``` yaml
 parameters:
     tms_web_admin.api.faq.class: Tms\WebAdminBundle\HttpClient\FaqApi
@@ -190,24 +190,24 @@ services:
         arguments: [ null, null ]
         calls:
             - [setRequest, ['@?request=']]
-``` 
+```
 
 - in managers.yml, create a service for the faq : tms_web_admin.manager.faq, which take in argument the FaqManager
 
 ``` yaml
 parameters:
     tms_web_admin.manager.faq.class: Tms\WebAdminBundle\Manager\FaqManager
-    
+
 services:
     tms_web_admin.manager.faq:
-        
+
 ```
 
 4- Dependency injection
 
 - in your extension file of Dependency injection, not forget to load the file managers.yml
 
-``` yaml    
+``` yaml
 $loader->load('managers.yml');
 $loader->load('services.yml');
 ```
@@ -253,7 +253,7 @@ This will result to a :
 - *200 HTTP Status Code*
 - *404 Not found HTTP Status Code*
 
-#### post an evaluation on a response 
+#### post an evaluation on a response
 
 **Request**
 
@@ -262,12 +262,12 @@ This will result to a :
 | /api/evaluation.json    | POST   |   value                | Content-Type=json
 |                         |        |   response_id          |
 |                         |        |    user_id             |
-                            
+
 
 This will result to a :
 
 - *201  Created HTTP Status Code*
-- *404  
+- *404
 
 For a 201 HTTP Response code, you will "true" (in json format) in the response content.
 
@@ -279,12 +279,12 @@ For a 201 HTTP Response code, you will "true" (in json format) in the response c
 |------------------------------|--------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------
 | /api/consumerSearchs.json    | POST   |   answerFound (true or false   | Content-Type=json
 |                              |        |   response_id                  |
-|                              |        |    user_id                     
+|                              |        |    user_id
 
 
 This will result to a :
 
 - *201  Created HTTP Status Code*
-- *404  
+- *404
 
 For a 201 HTTP Response code, you will "true" (in json format) in the response content.

@@ -1,7 +1,7 @@
 <?php
 namespace Tms\Bundle\FaqClientBundle\Manager;
 
-use Da\ApiClientBundle\HttpClient\RestApiClientInterface;
+use Da\ApiClientBundle\Http\Rest\RestApiClientInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Tms\Bundle\FaqClientBundle\Parser\ParserInterface;
 
