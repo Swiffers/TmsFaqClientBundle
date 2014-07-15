@@ -16,7 +16,7 @@ class QuestionManager extends AbstractManager
      */
     public function search ($query)
     {
-        $data = $this->faqApi->get(sprintf($this->getObjectApiURL(), $query), array());
+        $data = $this->faqApi->get(sprintf($this->getObjectApiURL(), $query), array())->getContent();
 
         return $this->parser->parse($data, false, $this->getApiFormat());
     }

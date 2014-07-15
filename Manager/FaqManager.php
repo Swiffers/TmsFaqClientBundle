@@ -9,14 +9,14 @@ class FaqManager extends AbstractManager
 {
     /**
      * Find the FAQ for a given customerId
-     * 
+     *
      * @param  string $customerId Customer identifier
      * @param  array  $criteria   Filter criteria
      * @return Faq
      */
     public function findOneByCustomerId ($customerId, array $criteria = array())
     {
-        $data = $this->faqApi->get(sprintf($this->getCustomerApiURL(), $customerId), $criteria);
+        $data = $this->faqApi->get(sprintf($this->getCustomerApiURL(), $customerId), $criteria)->getContent();
 
         return $this->parser->parse($data, false, $this->getApiFormat());
     }
